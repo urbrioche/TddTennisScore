@@ -15,6 +15,8 @@
         {
             if (IsSameScore() && FirstPlayerScore == 1)
                 return "Fifteen All";
+            if (IsSameScore() && FirstPlayerScore == 2)
+                return "Thirty All";
 
             return "Love All";
         }

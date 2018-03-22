@@ -31,6 +31,13 @@ namespace TddTennisScore
             ScoreShouldBe("Fifteen All");
         }
 
+        [TestMethod]
+        public void Thirty_All()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 2, SecondPlayerScore = 2 });
+            ScoreShouldBe("Thirty All");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             var scoreResult = _tennisGame.ScoreResult(AnyGameId);
