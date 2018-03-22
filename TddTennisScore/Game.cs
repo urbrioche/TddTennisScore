@@ -25,6 +25,8 @@ namespace TddTennisScore
         {
             if (IsSameScore())
             {
+                if (FirstPlayerScore >= 3)
+                    return "Deuce";
                 return _scoreLookup[FirstPlayerScore] + " All";
             }
   
