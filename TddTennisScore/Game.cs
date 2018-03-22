@@ -16,6 +16,8 @@ namespace TddTennisScore
             [3] = "Forty"
         };
 
+        private const string Deuce = "Deuce";
+
         private bool IsSameScore()
         {
             return FirstPlayerScore == SecondPlayerScore;
@@ -25,12 +27,17 @@ namespace TddTennisScore
         {
             if (IsSameScore())
             {
-                if (FirstPlayerScore >= 3)
-                    return "Deuce";
+                if (IsDeuce())
+                    return Deuce;
                 return _scoreLookup[FirstPlayerScore] + " All";
             }
   
             return "";
+        }
+
+        private bool IsDeuce()
+        {
+            return FirstPlayerScore >= 3;
         }
     }
 }
