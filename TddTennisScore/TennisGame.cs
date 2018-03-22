@@ -12,6 +12,10 @@
         public string ScoreResult(int gameId)
         {
             var game = this._repo.GetGame(gameId);
+
+            if (game.FirstPlayerScore == game.SecondPlayerScore && game.FirstPlayerScore == 1)
+                return "Fifteen All";
+
             return "Love All";
         }
     }
