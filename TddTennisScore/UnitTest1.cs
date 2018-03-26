@@ -94,8 +94,6 @@ namespace TddTennisScore
             ScoreShouldBe("Tom Win");
         }
 
-        public object FirstPlayerName { get; set; }
-
         private void ScoreShouldBe(string expected)
         {
             var scoreResult = _tennisGame.ScoreResult(AnyGameId);
