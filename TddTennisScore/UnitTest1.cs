@@ -45,6 +45,57 @@ namespace TddTennisScore
             ScoreShouldBe("Deuce");
         }
 
+        [TestMethod]    
+        public void Fifteen_Love()
+        {
+            GivenGame(new Game{ Id = AnyGameId, FirstPlayerScore = 1, SecondPlayerScore = 0});
+            ScoreShouldBe("Fifteen Love");
+        }
+
+        [TestMethod]
+        public void Thirty_Fifteen()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 2, SecondPlayerScore = 1 });
+            ScoreShouldBe("Thirty Fifteen");
+        }
+
+        [TestMethod]
+        public void Forty_Fifteen()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 3, SecondPlayerScore = 1 });
+            ScoreShouldBe("Forty Fifteen");
+        }
+
+        [TestMethod]
+        public void FirstPlayer_Advance()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 4, SecondPlayerScore = 3, FirstPlayerName = "Joey" });
+            ScoreShouldBe("Joey Adv");
+        }
+
+        [TestMethod]
+        public void SecondPlayer_Advance()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 3, SecondPlayerScore = 4, SecondPlayerName = "Tom" });
+            ScoreShouldBe("Tom Adv");
+        }
+
+        [TestMethod]
+        public void FirstPlayer_Win()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 5, SecondPlayerScore = 3, FirstPlayerName = "Joey" });
+            ScoreShouldBe("Joey Win");
+        }
+
+        [TestMethod]
+        public void SecondPlayer_Win()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 3, SecondPlayerScore = 5, SecondPlayerName = "Tom" });
+            ScoreShouldBe("Tom Win");
+        }
+
+        public object FirstPlayerName { get; set; }
+
         private void ScoreShouldBe(string expected)
         {
             var scoreResult = _tennisGame.ScoreResult(AnyGameId);
