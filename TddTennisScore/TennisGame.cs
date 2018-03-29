@@ -20,6 +20,8 @@ namespace TddTennisScore
                     return "Love All";
                 if (game.FirstPlayerScore == 1)
                     return "Fifteen All";
+                if (game.FirstPlayerScore == 2)
+                    return "Thirty All";
             }
 
             throw new NotImplementedException();
