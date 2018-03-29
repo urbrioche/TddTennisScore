@@ -6,14 +6,31 @@ namespace TddTennisScore
     [TestClass]
     public class UnitTest1
     {
+        private IRepository<Game> _repository = Substitute.For<IRepository<Game>>();
+        private TennisGame _tennisGame;
+        private const int AnyGameId = 1;
+
+        [TestInitialize]
+        public void TestInit()
+        {
+            _tennisGame = new TennisGame(_repository);
+        }
+
         [TestMethod]
         public void Love_All()
         {
-            var repository = Substitute.For<IRepository<Game>>();
-            var gameId = 1;
-            repository.GetGame(gameId).Returns(new Game { Id = 1, FirstPlayerScore = 0, SecondPlayerScore = 0 });
-            var tennisGame = new TennisGame(repository);
-            Assert.AreEqual("Love All", tennisGame.ScoreResult(gameId));
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 0, SecondPlayerScore = 0 });
+            ScoreShouldBe("Love All");
+        }
+
+        private void ScoreShouldBe(string expected)
+        {
+            Assert.AreEqual(expected, _tennisGame.ScoreResult(AnyGameId));
+        }
+
+        private void GivenGame(Game game)
+        {
+            _repository.GetGame(AnyGameId).Returns(game);
         }
     }
 }
