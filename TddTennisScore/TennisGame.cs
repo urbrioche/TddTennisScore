@@ -13,6 +13,7 @@ namespace TddTennisScore
 
         public string ScoreResult(int gameId)
         {
+            return "Love All";
             throw new NotImplementedException();
         }
     }
