@@ -13,7 +13,15 @@ namespace TddTennisScore
 
         public string ScoreResult(int gameId)
         {
-            return "Love All";
+            var game = _repo.GetGame(gameId);
+            if (game.FirstPlayerScore == game.SecondPlayerScore)
+            {
+                if (game.FirstPlayerScore == 0)
+                    return "Love All";
+                if (game.FirstPlayerScore == 1)
+                    return "Fifteen All";
+            }
+
             throw new NotImplementedException();
         }
     }

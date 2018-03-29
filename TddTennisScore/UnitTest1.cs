@@ -23,6 +23,13 @@ namespace TddTennisScore
             ScoreShouldBe("Love All");
         }
 
+        [TestMethod]
+        public void Fifteen_All()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 1, SecondPlayerScore = 1 });
+            ScoreShouldBe("Fifteen All");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             Assert.AreEqual(expected, _tennisGame.ScoreResult(AnyGameId));
