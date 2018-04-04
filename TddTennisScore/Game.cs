@@ -35,7 +35,7 @@ namespace TddTennisScore
                 return $"{_scoreLookup[FirstPlayerScore]} All";
             }
 
-            throw new NotImplementedException();
+            return $"{_scoreLookup[FirstPlayerScore]} {_scoreLookup[SecondPlayerScore]}";
         }
 
         private bool IsDeuce()
