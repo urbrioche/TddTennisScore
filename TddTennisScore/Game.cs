@@ -28,26 +28,24 @@ namespace TddTennisScore
 
         public string ScoreResult()
         {
-            if (IsSameScore())
-            {
-                if (IsDeuce())
-                {
-                    return Deuce;
-                }
+            return IsSameScore()
+                ? (IsDeuce() ? Deuce : SameScoreLookup())
+                : (IsReadyForWin() ? AdvState() : ScoreLookup());
+        }
 
-                return $"{_scoreLookup[FirstPlayerScore]} All";
-            }
-
-
-            if (IsReadyForWin())
-            {
-                if (IsAdv())
-                    return AdvPlayer() + " Adv";
-
-                return AdvPlayer() + " Win";
-            }
-
+        private string ScoreLookup()
+        {
             return $"{_scoreLookup[FirstPlayerScore]} {_scoreLookup[SecondPlayerScore]}";
+        }
+
+        private string SameScoreLookup()
+        {
+            return $"{_scoreLookup[FirstPlayerScore]} All";
+        }
+
+        private string AdvState()
+        {
+            return AdvPlayer() + (IsAdv() ? " Adv" : " Win");
         }
 
         private string AdvPlayer()
