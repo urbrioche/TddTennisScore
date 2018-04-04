@@ -65,6 +65,12 @@ namespace TddTennisScore
             ScoreShouldBe("Forty Thirty");
         }
 
+        [TestMethod]
+        public void FirstPlayer_Advance()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 4, SecondPlayerScore = 3, FirstPlayerName = "Joey" });
+            ScoreShouldBe("Joey Adv");
+        }
 
 
         private void ScoreShouldBe(string expected)

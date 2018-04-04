@@ -18,6 +18,7 @@ namespace TddTennisScore
         public int Id { get; set; }
         public int FirstPlayerScore { get; set; }
         public int SecondPlayerScore { get; set; }
+        public string FirstPlayerName { get; set; }
 
         public bool IsSameScore()
         {
@@ -34,6 +35,11 @@ namespace TddTennisScore
                 }
 
                 return $"{_scoreLookup[FirstPlayerScore]} All";
+            }
+
+            if ( FirstPlayerScore >=3 && SecondPlayerScore >=3 &&  (FirstPlayerScore - SecondPlayerScore) == 1)
+            {
+                return FirstPlayerName + " Adv";
             }
 
             return $"{_scoreLookup[FirstPlayerScore]} {_scoreLookup[SecondPlayerScore]}";
