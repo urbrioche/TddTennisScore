@@ -38,18 +38,29 @@ namespace TddTennisScore
                 return $"{_scoreLookup[FirstPlayerScore]} All";
             }
 
-            if (FirstPlayerScore >= 3 && SecondPlayerScore >= 3 && FirstPlayerScore - SecondPlayerScore == 1)
-            {
-                return FirstPlayerName + " Adv";
-            }
 
-            if (FirstPlayerScore >= 3 && SecondPlayerScore >= 3 && SecondPlayerScore - FirstPlayerScore == 1)
+            if (IsReadyForWin() && IsAdv())
             {
-                return SecondPlayerName + " Adv";
+                return AdvPlayer() + " Adv";
             }
-
 
             return $"{_scoreLookup[FirstPlayerScore]} {_scoreLookup[SecondPlayerScore]}";
+        }
+
+        private string AdvPlayer()
+        {
+            return (FirstPlayerScore > SecondPlayerScore? FirstPlayerName: SecondPlayerName);
+        }
+
+        private bool IsAdv()
+        {
+            return Math.Abs(FirstPlayerScore - SecondPlayerScore) == 1;
+        }
+
+        private bool IsReadyForWin()
+        {
+            var b = FirstPlayerScore >= 3 && SecondPlayerScore >= 3;
+            return b;
         }
 
         private bool IsDeuce()
