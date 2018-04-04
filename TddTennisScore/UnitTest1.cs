@@ -37,6 +37,13 @@ namespace TddTennisScore
             ScoreShouldBe("Thirty All");
         }
 
+        [TestMethod]
+        public void Deuce()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 3, SecondPlayerScore = 3 });
+            ScoreShouldBe("Deuce");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             Assert.AreEqual(expected, _tennisGame.ScoreResult(AnyGameId));
