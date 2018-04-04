@@ -39,9 +39,12 @@ namespace TddTennisScore
             }
 
 
-            if (IsReadyForWin() && IsAdv())
+            if (IsReadyForWin())
             {
-                return AdvPlayer() + " Adv";
+                if (IsAdv())
+                    return AdvPlayer() + " Adv";
+
+                return AdvPlayer() + " Win";
             }
 
             return $"{_scoreLookup[FirstPlayerScore]} {_scoreLookup[SecondPlayerScore]}";
@@ -49,7 +52,7 @@ namespace TddTennisScore
 
         private string AdvPlayer()
         {
-            return (FirstPlayerScore > SecondPlayerScore? FirstPlayerName: SecondPlayerName);
+            return (FirstPlayerScore > SecondPlayerScore ? FirstPlayerName : SecondPlayerName);
         }
 
         private bool IsAdv()
