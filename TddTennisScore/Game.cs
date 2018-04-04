@@ -12,6 +12,8 @@ namespace TddTennisScore
             [2] = "Thirty"
         };
 
+        private const string Deuce = "Deuce";
+
         public int Id { get; set; }
         public int FirstPlayerScore { get; set; }
         public int SecondPlayerScore { get; set; }
@@ -25,12 +27,20 @@ namespace TddTennisScore
         {
             if (IsSameScore())
             {
-                if (FirstPlayerScore >= 3)
-                    return "Deuce";
+                if (IsDeuce())
+                {
+                    return Deuce;
+                }
+
                 return $"{_scoreLookup[FirstPlayerScore]} All";
             }
 
             throw new NotImplementedException();
+        }
+
+        private bool IsDeuce()
+        {
+            return FirstPlayerScore >= 3;
         }
     }
 }
