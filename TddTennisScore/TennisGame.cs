@@ -14,8 +14,7 @@ namespace TddTennisScore
 
         public string ScoreResult(int gameId)
         {
-            var game = this._repo.GetGame(gameId);
-            return game.ScoreResult();
+            throw new NotImplementedException();
         }
     }
 }
