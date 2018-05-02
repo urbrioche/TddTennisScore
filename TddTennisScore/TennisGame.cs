@@ -17,8 +17,13 @@ namespace TddTennisScore
             var game = _repo.GetGame(gameId);
             if (game.IsSameScore())
             {
+                if (game.FirstPlayerScore >= 3)
+                {
+                    return "Deuce";
+                }
                 return game.SameScoreLookup();
             }
+
 
             return string.Empty;
         }
