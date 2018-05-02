@@ -52,6 +52,8 @@ namespace TddTennisScore
                 {
                     return (FirstPlayerScore > SecondPlayerScore ? FirstPlayerName : SecondPlayerName) + " Adv";
                 }
+
+                return (FirstPlayerScore > SecondPlayerScore ? FirstPlayerName : SecondPlayerName) + " Win";
             }
 
 
