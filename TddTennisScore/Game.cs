@@ -36,29 +36,34 @@ namespace TddTennisScore
 
         public string ScoreResult()
         {
-            if (IsSameScore())
-            {
-                if (IsDeuce())
-                {
-                    return "Deuce";
-                }
+            return IsSameScore()
+                ? (IsDeuce() ? "Deuce" : SameScoreLookup())
+                : (IsReadyForWin() ? AdvState() : LookupScore());
+        }
 
-                return SameScoreLookup();
-            }
-
-            if (FirstPlayerScore > 3 || SecondPlayerScore > 3)
-            {
-                if (Math.Abs(FirstPlayerScore - SecondPlayerScore) == 1)
-                {
-                    return (FirstPlayerScore > SecondPlayerScore ? FirstPlayerName : SecondPlayerName) + " Adv";
-                }
-
-                return (FirstPlayerScore > SecondPlayerScore ? FirstPlayerName : SecondPlayerName) + " Win";
-            }
-
-
+        private string LookupScore()
+        {
             return _scoreLookup[FirstPlayerScore] + " " + _scoreLookup[SecondPlayerScore];
+        }
 
+        private string AdvState()
+        {
+            return IsAdv() ? AdvPlayer() + " Adv" : AdvPlayer() + " Win";
+        }
+
+        private string AdvPlayer()
+        {
+            return FirstPlayerScore > SecondPlayerScore ? FirstPlayerName : SecondPlayerName;
+        }
+
+        private bool IsAdv()
+        {
+            return Math.Abs(FirstPlayerScore - SecondPlayerScore) == 1;
+        }
+
+        private bool IsReadyForWin()
+        {
+            return FirstPlayerScore > 3 || SecondPlayerScore > 3;
         }
     }
 }
