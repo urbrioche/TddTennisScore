@@ -87,6 +87,13 @@ namespace TddTennisScore
             ScoreShouldBe("Joey Win");
         }
 
+        [TestMethod]
+        public void Second_Player_Win()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 3, SecondPlayerScore = 5, FirstPlayerName = "Joey", SecondPlayerName = "Tom" });
+            ScoreShouldBe("Tom Win");
+        }
+
         private void ScoreShouldBe(string expected)
         {
             var scoreResult = _tennisGame.ScoreResult(AnyGameId);
