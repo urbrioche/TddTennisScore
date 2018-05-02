@@ -26,6 +26,12 @@ namespace TddTennisScore
                 {
                     return "Fifteen All";
                 }
+
+                if (game.FirstPlayerScore == 2)
+                {
+                    return "Thirty All";
+                }
+            
             }
 
             return string.Empty;
