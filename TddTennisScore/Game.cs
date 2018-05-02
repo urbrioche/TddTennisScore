@@ -8,6 +8,7 @@ namespace TddTennisScore
         public int FirstPlayerScore { get; set; }
         public int SecondPlayerScore { get; set; }
         public int Id { get; set; }
+        public string FirstPlayer { get; set; }
 
         public bool IsSameScore()
         {
@@ -43,6 +44,15 @@ namespace TddTennisScore
 
                 return SameScoreLookup();
             }
+
+            if (FirstPlayerScore > 3 || SecondPlayerScore > 3)
+            {
+                if (Math.Abs(FirstPlayerScore - SecondPlayerScore) == 1)
+                {
+                    return FirstPlayer + " Adv";
+                }
+            }
+
 
             return _scoreLookup[FirstPlayerScore] + " " + _scoreLookup[SecondPlayerScore];
 
