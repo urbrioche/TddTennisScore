@@ -15,17 +15,7 @@ namespace TddTennisScore
         public string ScoreResult(int gameId)
         {
             var game = _repo.GetGame(gameId);
-            if (game.IsSameScore())
-            {
-                if (game.IsDeuce())
-                {
-                    return "Deuce";
-                }
-                return game.SameScoreLookup();
-            }
-
-
-            return string.Empty;
+            return game.ScoreResult();
         }
     }
 }

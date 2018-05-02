@@ -30,5 +30,21 @@ namespace TddTennisScore
         {
             return FirstPlayerScore >= 3 && IsSameScore();
         }
+
+        public string ScoreResult()
+        {
+            if (IsSameScore())
+            {
+                if (IsDeuce())
+                {
+                    return "Deuce";
+                }
+
+                return SameScoreLookup();
+            }
+
+            return _scoreLookup[FirstPlayerScore] + " " + _scoreLookup[SecondPlayerScore];
+
+        }
     }
 }
