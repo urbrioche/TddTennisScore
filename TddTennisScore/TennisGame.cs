@@ -21,6 +21,11 @@ namespace TddTennisScore
                 {
                     return "Love All";
                 }
+
+                if (game.FirstPlayerScore == 1)
+                {
+                    return "Fifteen All";
+                }
             }
 
             return string.Empty;
