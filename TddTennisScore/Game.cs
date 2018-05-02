@@ -25,5 +25,10 @@ namespace TddTennisScore
             [1] = "Fifteen",
             [2] = "Thirty"
         };
+
+        public bool IsDeuce()
+        {
+            return FirstPlayerScore >= 3 && IsSameScore();
+        }
     }
 }

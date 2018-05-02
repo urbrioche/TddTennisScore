@@ -17,7 +17,7 @@ namespace TddTennisScore
             var game = _repo.GetGame(gameId);
             if (game.IsSameScore())
             {
-                if (game.FirstPlayerScore >= 3)
+                if (game.IsDeuce())
                 {
                     return "Deuce";
                 }
