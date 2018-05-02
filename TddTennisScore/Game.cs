@@ -7,6 +7,23 @@ namespace TddTennisScore
     {
         public int FirstPlayerScore { get; set; }
         public int SecondPlayerScore { get; set; }
-        public int Id { get; set; }        
+        public int Id { get; set; }
+
+        public bool IsSameScore()
+        {
+            return FirstPlayerScore == SecondPlayerScore;
+        }
+
+        public string SameScoreLookup()
+        {
+            return _scoreLookup[FirstPlayerScore] + " All";
+        }
+
+        public static Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
+        {
+            [0] = "Love",
+            [1] = "Fifteen",
+            [2] = "Thirty"
+        };
     }
 }

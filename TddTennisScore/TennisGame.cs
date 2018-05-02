@@ -6,12 +6,6 @@ namespace TddTennisScore
     public class TennisGame
     {
         private readonly IRepository<Game> _repo;
-        private static Dictionary<int, string> _scoreLookup = new Dictionary<int, string>
-        {
-            [0] = "Love",
-            [1] = "Fifteen",
-            [2] = "Thirty"
-        };
 
         public TennisGame(IRepository<Game> repo)
         {
@@ -21,9 +15,9 @@ namespace TddTennisScore
         public string ScoreResult(int gameId)
         {
             var game = _repo.GetGame(gameId);
-            if (game.FirstPlayerScore == game.SecondPlayerScore)
+            if (game.IsSameScore())
             {
-                return _scoreLookup[game.FirstPlayerScore] + " All";
+                return game.SameScoreLookup();
             }
 
             return string.Empty;
