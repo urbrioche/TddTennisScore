@@ -69,8 +69,15 @@ namespace TddTennisScore
         [TestMethod]
         public void First_Player_Advantage()
         {
-            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 4, SecondPlayerScore = 3, FirstPlayer = "Joey" });
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 4, SecondPlayerScore = 3, FirstPlayerName = "Joey" });
             ScoreShouldBe("Joey Adv");
+        }
+
+        [TestMethod]
+        public void Second_Player_Advantage()
+        {
+            GivenGame(new Game { Id = AnyGameId, FirstPlayerScore = 3, SecondPlayerScore = 4, FirstPlayerName = "Joey", SecondPlayerName = "Tom" });
+            ScoreShouldBe("Tom Adv");
         }
 
         private void ScoreShouldBe(string expected)

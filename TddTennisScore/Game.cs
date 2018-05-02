@@ -8,7 +8,8 @@ namespace TddTennisScore
         public int FirstPlayerScore { get; set; }
         public int SecondPlayerScore { get; set; }
         public int Id { get; set; }
-        public string FirstPlayer { get; set; }
+        public string FirstPlayerName { get; set; }
+        public string SecondPlayerName { get; set; }
 
         public bool IsSameScore()
         {
@@ -49,7 +50,7 @@ namespace TddTennisScore
             {
                 if (Math.Abs(FirstPlayerScore - SecondPlayerScore) == 1)
                 {
-                    return FirstPlayer + " Adv";
+                    return (FirstPlayerScore > SecondPlayerScore ? FirstPlayerName : SecondPlayerName) + " Adv";
                 }
             }
 
